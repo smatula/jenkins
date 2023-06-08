@@ -95,7 +95,7 @@ def verify_status(namespace, object_type, object_name, poll_interval_seconds, ma
     count = 1
     print('Getting {object_type} status for {object_name}')
     while(count <= max_retries):
-        status = oc.get_resource_info_by_jsonpath(object_type,object_name,namespace,json_path)
+        status = oc.get_resource_info_by_jsonpath(object_type,object_name,namespace,json_path, wait=True)
         if expected_status in status:
             break
         time.sleep(poll_interval_seconds)
